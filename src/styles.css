@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[data-theme="darkblue"] {
+  @apply bg-darkblue text-white;
+}
+
+[data-theme="darkred"] {
+  @apply bg-darkred text-white;
+}
+
+body,
+html {
+  @apply min-h-screen;
+}
