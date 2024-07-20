@@ -1,7 +1,9 @@
 export class SuperHero {
-  id?: number;
-  name = '';
-  firstName = '';
-  lastName = '';
-  place = '';
+  Id?: string;
+  Name = '';
+  FirstName = '';
+  LastName = '';
+  Location = '';
+  SuperPower = '';
+  items = [];
 }

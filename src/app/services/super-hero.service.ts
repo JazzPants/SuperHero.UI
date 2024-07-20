@@ -38,7 +38,7 @@ export class SuperHeroService {
 
   public deleteHero(hero: SuperHero): Observable<SuperHero[]> {
     return this.http.delete<SuperHero[]>(
-      `${environment.apiUrl}/${this.url}/${hero.id}`
+      `${environment.apiUrl}/${this.url}/${hero.Id}`
     );
   }
 }

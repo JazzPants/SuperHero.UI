@@ -1,23 +1,32 @@
 <div *ngIf="hero">
   <h2>Edit hero</h2>
-  <h3>Hero name: {{ hero.name }}</h3>
+  <h3>Hero name: {{ hero.Name }}</h3>
   <div>
     Name:
-    <input [(ngModel)]="hero.name" placeholder="Name" />
+    <input [(ngModel)]="hero.Name" placeholder="Name" />
   </div>
   <div>
     First Name:
-    <input [(ngModel)]="hero.firstName" placeholder="First Name" />
+    <input [(ngModel)]="hero.FirstName" placeholder="First Name" />
   </div>
   <div>
     Last Name:
-    <input [(ngModel)]="hero.lastName" placeholder="Last Name" />
+    <input [(ngModel)]="hero.LastName" placeholder="Last Name" />
   </div>
   <div>
-    Place:
-    <input [(ngModel)]="hero.place" placeholder="Place" />
+    Superpower
+    <input [(ngModel)]="hero.SuperPower" placeholder="Superpower" />
   </div>
-  <button (click)="updateHero(hero)" *ngIf="hero.id">Update and Save</button>
-  <button (click)="deleteHero(hero)" *ngIf="hero.id">Delete</button>
-  <button (click)="createHero(hero)" *ngIf="!hero.id">Create</button>
+  <div>
+    Location:
+    <input [(ngModel)]="hero.Location" placeholder="Place" />
+  </div>
+  <!-- to do: create form for adding multiple image links -> push into array which then gets sent to POST endpoint -->
+  <!-- <div>
+    Images
+    <input [(ngModel)]="hero.items" placeholder="Image links" />
+  </div> -->
+  <button (click)="updateHero(hero)" *ngIf="hero.Id">Update and Save</button>
+  <button (click)="deleteHero(hero)" *ngIf="hero.Id">Delete</button>
+  <button (click)="createHero(hero)" *ngIf="!hero.Id">Create</button>
 </div>
