@@ -27,6 +27,28 @@
   </tbody>
 </table>
 
+<!-- cards -->
+<!-- todo: max 4 or 10 per page? -->
+<div class="grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+  <div class="p-2 m-2 bg-emerald-300 min-h-40" *ngFor="let hero of heroes">
+    <div class="grid grid-cols-2">
+      <div>
+        <p>{{ hero.Name }}</p>
+        <p>{{ hero.FirstName }} {{ hero.LastName }}</p>
+        <p>{{ hero.SuperPower }}</p>
+        <p>{{ hero.Location }}</p>
+      </div>
+      <div>
+        <img
+          class="min-h-40 min-w-20 bg-slate-300"
+          alt="{{ hero.Name }}"
+          src="{{ hero.items[0] }}"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
 <app-edit-hero
   [hero]="heroToEdit"
   (heroesUpdated)="updateHeroList($event)"
