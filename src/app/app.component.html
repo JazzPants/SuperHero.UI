@@ -1,6 +1,10 @@
 <h1 class="text-3xl font-bold underline">SuperHero Database App</h1>
 
 <button (click)="initNewHero()">Create New Hero</button>
+<app-edit-hero
+  [hero]="heroToEdit"
+  (heroesUpdated)="updateHeroList($event)"
+></app-edit-hero>
 
 <table>
   <thead>
@@ -49,8 +53,3 @@
     </div>
   </div>
 </div>
-
-<app-edit-hero
-  [hero]="heroToEdit"
-  (heroesUpdated)="updateHeroList($event)"
-></app-edit-hero>
