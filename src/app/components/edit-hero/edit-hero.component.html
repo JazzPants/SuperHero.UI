@@ -1,32 +1,35 @@
 <div *ngIf="hero">
   <h2>Edit hero</h2>
-  <h3>Hero name: {{ hero.Name }}</h3>
-  <div>
-    Name:
-    <input [(ngModel)]="hero.Name" placeholder="Name" />
-  </div>
-  <div>
-    First Name:
-    <input [(ngModel)]="hero.FirstName" placeholder="First Name" />
-  </div>
-  <div>
-    Last Name:
-    <input [(ngModel)]="hero.LastName" placeholder="Last Name" />
-  </div>
-  <div>
-    Superpower
-    <input [(ngModel)]="hero.SuperPower" placeholder="Superpower" />
-  </div>
-  <div>
-    Location:
-    <input [(ngModel)]="hero.Location" placeholder="Place" />
-  </div>
-  <!-- to do: create form for adding multiple image links -> push into array which then gets sent to POST endpoint -->
-  <!-- <div>
-    Images
-    <input [(ngModel)]="hero.items" placeholder="Image links" />
-  </div> -->
-  <button (click)="updateHero(hero)" *ngIf="hero.Id">Update and Save</button>
-  <button (click)="deleteHero(hero)" *ngIf="hero.Id">Delete</button>
-  <button (click)="createHero(hero)" *ngIf="!hero.Id">Create</button>
+  <h3>Your hero name: {{ heroForm.value.name }}</h3>
+  <form [formGroup]="heroForm">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" type="text" placeholder="Name" formControlName="name" />
+    </div>
+    <div>
+      First Name:
+      <input formControlName="firstName" placeholder="First Name" />
+    </div>
+    <div>
+      Last Name: <input formControlName="lastName" placeholder="Last Name" />
+    </div>
+    <div>
+      Superpower
+      <input formControlName="superPower" placeholder="Superpower" />
+    </div>
+    <div>
+      Location:
+      <input formControlName="location" placeholder="Location" />
+      <p>{{ heroForm.value.location }}</p>
+    </div>
+    <!-- to do: create form for adding multiple image links -> push into array which then gets sent to POST endpoint -->
+    <!-- <div>
+      Images
+      <input formControlName="images" placeholder="Image links" />
+    </div> -->
+    <button (click)="updateHero(hero)" *ngIf="hero.Id">Update and Save</button>
+    <button (click)="deleteHero(hero)" *ngIf="hero.Id">Delete</button>
+    <button (click)="createHero()" *ngIf="!hero.Id">Create</button>
+    <button (click)="checkHero(hero)">Check hero</button>
+  </form>
 </div>
