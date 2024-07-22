@@ -14,6 +14,7 @@ import { EditHeroComponent } from './components/edit-hero/edit-hero.component';
 })
 export class AppComponent {
   title = 'SuperHero.UI';
+  formTitle = 'Test title';
   heroes: SuperHero[] = [];
   heroToEdit?: SuperHero;
 
@@ -52,11 +53,13 @@ export class AppComponent {
   }
 
   initNewHero() {
+    this.formTitle = 'Create New Hero';
     this.heroToEdit = new SuperHero();
   }
 
   editHero(hero: SuperHero) {
     console.log(this.heroes);
+    this.formTitle = 'Edit existing hero';
     this.heroToEdit = hero;
   }
 

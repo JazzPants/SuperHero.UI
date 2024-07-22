@@ -33,6 +33,7 @@ export class EditHeroComponent {
   });
 
   @Input() hero?: SuperHero;
+  // @Input() formTitle?: string;
   @Output() heroesUpdated = new EventEmitter<SuperHero[]>();
 
   constructor(private superHeroService: SuperHeroService) {}
@@ -73,6 +74,7 @@ export class EditHeroComponent {
       .updateHero(updatedHero)
       .subscribe((heroes: SuperHero[]) => this.heroesUpdated.emit(heroes));
   }
+
   deleteTheHero(hero: SuperHero) {
     this.superHeroService
       .deleteHero(hero)
