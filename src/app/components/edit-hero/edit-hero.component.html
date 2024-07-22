@@ -1,6 +1,7 @@
 <div *ngIf="hero">
   <h2>Edit hero</h2>
   <h3>Your hero name: {{ heroForm.value.name }}</h3>
+  <!-- <h3>Id: {{ heroForm.value.Id }}</h3> -->
   <form [formGroup]="heroForm">
     <div>
       <label for="name">Name:</label>
@@ -8,18 +9,18 @@
     </div>
     <div>
       First Name:
-      <input formControlName="firstName" placeholder="First Name" />
+      <input placeholder="First Name" formControlName="firstName" />
     </div>
     <div>
-      Last Name: <input formControlName="lastName" placeholder="Last Name" />
+      Last Name: <input placeholder="Last Name" formControlName="lastName" />
     </div>
     <div>
       Superpower
-      <input formControlName="superPower" placeholder="Superpower" />
+      <input placeholder="Superpower" formControlName="superPower" />
     </div>
     <div>
       Location:
-      <input formControlName="location" placeholder="Location" />
+      <input placeholder="Location" formControlName="location" />
       <p>{{ heroForm.value.location }}</p>
     </div>
     <!-- to do: create form for adding multiple image links -> push into array which then gets sent to POST endpoint -->
@@ -27,9 +28,9 @@
       Images
       <input formControlName="images" placeholder="Image links" />
     </div> -->
-    <button (click)="updateHero(hero)" *ngIf="hero.Id">Update and Save</button>
-    <button (click)="deleteHero(hero)" *ngIf="hero.Id">Delete</button>
-    <button (click)="createHero()" *ngIf="!hero.Id">Create</button>
+    <button (click)="updateTheHero()" *ngIf="hero.Id">Update and Save</button>
+    <button (click)="deleteTheHero(hero)" *ngIf="hero.Id">Delete</button>
+    <button (click)="createTheHero()" *ngIf="!hero.Id">Create</button>
     <button (click)="checkHero(hero)">Check hero</button>
   </form>
 </div>

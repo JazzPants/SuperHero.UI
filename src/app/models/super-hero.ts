@@ -3,7 +3,7 @@ export class SuperHero {
   Name = '';
   FirstName = '';
   LastName = '';
-  Location = '';
   SuperPower = '';
-  items = [];
+  Location = '';
+  Items = ['string1'];
 }
