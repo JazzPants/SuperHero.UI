@@ -2,3 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input {
+  @apply border rounded-md p-1 m-1 bg-white border-slate-900;
+}
+
+button {
+  @apply border rounded-md p-2 bg-sky-400;
+}
+
+h2 {
+  @apply text-2xl font-bold;
+}

@@ -1,32 +1,53 @@
 <div *ngIf="hero">
   <h2>Edit hero</h2>
-  <h3>Hero name: {{ hero.Name }}</h3>
-  <div>
-    Name:
-    <input [(ngModel)]="hero.Name" placeholder="Name" />
-  </div>
-  <div>
-    First Name:
-    <input [(ngModel)]="hero.FirstName" placeholder="First Name" />
-  </div>
-  <div>
-    Last Name:
-    <input [(ngModel)]="hero.LastName" placeholder="Last Name" />
-  </div>
-  <div>
-    Superpower
-    <input [(ngModel)]="hero.SuperPower" placeholder="Superpower" />
-  </div>
-  <div>
-    Location:
-    <input [(ngModel)]="hero.Location" placeholder="Place" />
-  </div>
-  <!-- to do: create form for adding multiple image links -> push into array which then gets sent to POST endpoint -->
-  <!-- <div>
-    Images
-    <input [(ngModel)]="hero.items" placeholder="Image links" />
-  </div> -->
-  <button (click)="updateHero(hero)" *ngIf="hero.Id">Update and Save</button>
-  <button (click)="deleteHero(hero)" *ngIf="hero.Id">Delete</button>
-  <button (click)="createHero(hero)" *ngIf="!hero.Id">Create</button>
+  <h3>Your hero name: {{ heroForm.value.Name }}</h3>
+  <!-- <h3>Id: {{ heroForm.value.Id }}</h3> -->
+  <form [formGroup]="heroForm">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" type="text" placeholder="Name" formControlName="Name" />
+      <div *ngIf="heroForm.controls.Name.invalid">
+        <small class="text-red-800"
+          >Name is required and minimum 3 characters.</small
+        >
+      </div>
+    </div>
+    <div>
+      First Name:
+      <input placeholder="First Name" formControlName="FirstName" />
+    </div>
+    <div>
+      Last Name: <input placeholder="Last Name" formControlName="LastName" />
+    </div>
+    <div>
+      Superpower
+      <input placeholder="Superpower" formControlName="SuperPower" />
+    </div>
+    <div>
+      Location:
+      <input placeholder="Location" formControlName="Location" />
+    </div>
+    <!-- to do: create form for adding multiple image links -> push into array which then gets sent to POST endpoint -->
+    <!-- <div>
+      Images
+      <input formControlName="images" placeholder="Image links" />
+    </div> -->
+    <button
+      (click)="updateTheHero()"
+      [disabled]="heroForm.invalid"
+      *ngIf="hero.Id"
+      [ngClass]="{ 'bg-sky-200 text-slate-400': heroForm.invalid }"
+    >
+      Update and Save
+    </button>
+    <button (click)="deleteTheHero(hero)" *ngIf="hero.Id">Delete</button>
+    <button
+      (click)="createTheHero()"
+      [disabled]="heroForm.invalid"
+      *ngIf="!hero.Id"
+    >
+      Create
+    </button>
+    <!-- <button (click)="checkHero(hero)">Check hero</button> -->
+  </form>
 </div>
