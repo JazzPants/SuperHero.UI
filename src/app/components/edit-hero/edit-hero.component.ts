@@ -7,15 +7,20 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { SuperHero } from '../../models/super-hero';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import {
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { NgClass, NgIf } from '@angular/common';
 // import { EventEmitter } from 'stream';
 import { SuperHeroService } from '../../services/super-hero.service';
 
 @Component({
   selector: 'app-edit-hero',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule],
+  imports: [NgIf, ReactiveFormsModule, NgClass],
   templateUrl: './edit-hero.component.html',
   styleUrl: './edit-hero.component.css',
 })
@@ -24,12 +29,12 @@ import { SuperHeroService } from '../../services/super-hero.service';
 export class EditHeroComponent {
   heroForm = new FormGroup({
     // Id: new FormControl(''),
-    name: new FormControl('A super hero name'),
-    firstName: new FormControl('123'),
-    lastName: new FormControl(''),
-    superPower: new FormControl(''),
-    location: new FormControl(''),
-    items: new FormControl(['string1']),
+    Name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    FirstName: new FormControl(''),
+    LastName: new FormControl(''),
+    SuperPower: new FormControl(''),
+    Location: new FormControl(''),
+    Items: new FormControl(['string1']),
   });
 
   @Input() hero?: SuperHero;
@@ -53,12 +58,12 @@ export class EditHeroComponent {
     if (changes['hero'] && this.hero) {
       // Id: this.hero.Id,
       this.heroForm.patchValue({
-        name: this.hero.Name,
-        firstName: this.hero.FirstName,
-        lastName: this.hero.LastName,
-        superPower: this.hero.SuperPower,
-        location: this.hero.Location,
-        items: this.hero.Items || ['string1'], // Ensure to handle if images are undefined
+        Name: this.hero.Name,
+        FirstName: this.hero.FirstName,
+        LastName: this.hero.LastName,
+        SuperPower: this.hero.SuperPower,
+        Location: this.hero.Location,
+        Items: this.hero.Items || ['string1'], // Ensure to handle if images are undefined
       });
     }
     // console.log('selecting a hero to create/edit', this.hero);
@@ -89,6 +94,6 @@ export class EditHeroComponent {
   }
 
   checkHero(hero: SuperHero) {
-    console.log(hero);
+    console.log('You are editing:', hero);
   }
 }

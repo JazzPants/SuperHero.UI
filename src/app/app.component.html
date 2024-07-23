@@ -39,6 +39,7 @@
         <p>{{ hero.FirstName }} {{ hero.LastName }}</p>
         <p>{{ hero.SuperPower }}</p>
         <p>{{ hero.Location }}</p>
+        <button (click)="editHero(hero)">Edit</button>
       </div>
       <div>
         <img
@@ -52,7 +53,8 @@
   </div>
 </div>
 
-<table>
+<!-- tabulated data -->
+<!-- <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -75,4 +77,4 @@
       <td><button (click)="editHero(hero)">Edit</button></td>
     </tr>
   </tbody>
-</table>
+</table> -->
